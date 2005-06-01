@@ -1,5 +1,7 @@
 Revision history for Wx-Perl-CheckBoxWizardPage
 
-0.01    Date/time
+0.02    2005-06-01
+        Added SetNext and SetPrev methods
+0.01    2005-06-01
         First version, released on an unsuspecting world.
 

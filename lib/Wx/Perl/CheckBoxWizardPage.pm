@@ -12,7 +12,7 @@ use Wx qw(wxALL wxGROW wxICON_INFORMATION wxOK);
 use Wx::Event qw(EVT_WIZARD_PAGE_CHANGING);
 use base qw(Wx::WizardPage);
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub new
 # The constructor...
@@ -26,6 +26,9 @@ sub new
     $self->{_selectionisoptional} = 0;
     $self->{_tls} = Wx::FlexGridSizer->new(0,1); # only one column    
 
+    $self->{_tls}->AddGrowableRow(0);
+    $self->{_tls}->AddGrowableCol(0);
+    $self->SetAutoLayout(1);
     $self->SetSizer($self->{_tls});
     $self->{_tls}->SetSizeHints($self);
     
@@ -69,6 +72,18 @@ sub GetPrev
 {
     my $self = shift;
     return $self->{_prev};
+}
+
+sub SetNext
+{
+    my $self = shift;
+    $self->{_next} = shift;
+}
+
+sub SetPrev
+{
+    my $self = shift;
+    $self->{_prev} = shift;
 }
 
 sub AddItems
@@ -226,6 +241,14 @@ anything. Default, the user is not allowed to go to the next page without making
 which results in a MessageBox with a gentle reminder to select something.
 
 If you call SelectionIsOptional(1), the user is allowed to continue without making a selection.
+
+=head2 SetNext(page)
+
+This method will set the next page to the specified Wizard page.
+
+=head2 SetPrev(page)
+
+This method will set the previous page to the specified Wizard page.
 
 =head1 AUTHOR
 
