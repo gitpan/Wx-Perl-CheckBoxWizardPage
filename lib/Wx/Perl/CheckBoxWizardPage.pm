@@ -12,7 +12,7 @@ use Wx qw(wxALL wxGROW wxICON_INFORMATION wxOK);
 use Wx::Event qw(EVT_WIZARD_PAGE_CHANGING);
 use base qw(Wx::WizardPage);
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 sub new
 # The constructor...
